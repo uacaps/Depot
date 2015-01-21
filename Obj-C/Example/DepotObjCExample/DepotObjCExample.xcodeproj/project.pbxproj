@@ -14,6 +14,10 @@
 		1F87F2861A705ADA00BAE0A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F87F2851A705ADA00BAE0A1 /* Images.xcassets */; };
 		1F87F2891A705ADB00BAE0A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F87F2871A705ADB00BAE0A1 /* LaunchScreen.xib */; };
 		1F87F2951A705ADB00BAE0A1 /* DepotObjCExampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 1F87F2941A705ADB00BAE0A1 /* DepotObjCExampleTests.m */; };
+		4C401D981A70637100FC0986 /* Depot.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C401D971A70637100FC0986 /* Depot.m */; };
+		4C401D9B1A70639F00FC0986 /* LocalDBData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C401D9A1A70639F00FC0986 /* LocalDBData.m */; };
+		4C401D9E1A7063BB00FC0986 /* TestData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C401D9D1A7063BB00FC0986 /* TestData.m */; };
+		4C401DA11A7063D500FC0986 /* WebserviceData.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C401DA01A7063D500FC0986 /* WebserviceData.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +44,14 @@
 		1F87F28E1A705ADB00BAE0A1 /* DepotObjCExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DepotObjCExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F87F2931A705ADB00BAE0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F87F2941A705ADB00BAE0A1 /* DepotObjCExampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DepotObjCExampleTests.m; sourceTree = "<group>"; };
+		4C401D961A70637100FC0986 /* Depot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Depot.h; path = ../../../Depot/Depot.h; sourceTree = "<group>"; };
+		4C401D971A70637100FC0986 /* Depot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Depot.m; path = ../../../Depot/Depot.m; sourceTree = "<group>"; };
+		4C401D991A70639F00FC0986 /* LocalDBData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LocalDBData.h; path = ../../../Depot/LocalDBData.h; sourceTree = "<group>"; };
+		4C401D9A1A70639F00FC0986 /* LocalDBData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LocalDBData.m; path = ../../../Depot/LocalDBData.m; sourceTree = "<group>"; };
+		4C401D9C1A7063BB00FC0986 /* TestData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TestData.h; path = ../../../Depot/TestData.h; sourceTree = "<group>"; };
+		4C401D9D1A7063BB00FC0986 /* TestData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TestData.m; path = ../../../Depot/TestData.m; sourceTree = "<group>"; };
+		4C401D9F1A7063D500FC0986 /* WebserviceData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WebserviceData.h; path = ../../../Depot/WebserviceData.h; sourceTree = "<group>"; };
+		4C401DA01A7063D500FC0986 /* WebserviceData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WebserviceData.m; path = ../../../Depot/WebserviceData.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +135,8 @@
 		1F87F2A61A705D1800BAE0A1 /* Depot */ = {
 			isa = PBXGroup;
 			children = (
+				4C401D961A70637100FC0986 /* Depot.h */,
+				4C401D971A70637100FC0986 /* Depot.m */,
 				1F87F2A71A705D3500BAE0A1 /* Datasources */,
 			);
 			name = Depot;
@@ -131,6 +145,12 @@
 		1F87F2A71A705D3500BAE0A1 /* Datasources */ = {
 			isa = PBXGroup;
 			children = (
+				4C401D991A70639F00FC0986 /* LocalDBData.h */,
+				4C401D9A1A70639F00FC0986 /* LocalDBData.m */,
+				4C401D9C1A7063BB00FC0986 /* TestData.h */,
+				4C401D9D1A7063BB00FC0986 /* TestData.m */,
+				4C401D9F1A7063D500FC0986 /* WebserviceData.h */,
+				4C401DA01A7063D500FC0986 /* WebserviceData.m */,
 			);
 			name = Datasources;
 			sourceTree = "<group>";
@@ -236,8 +256,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F87F2811A705ADA00BAE0A1 /* ViewController.m in Sources */,
+				4C401D9E1A7063BB00FC0986 /* TestData.m in Sources */,
+				4C401D9B1A70639F00FC0986 /* LocalDBData.m in Sources */,
 				1F87F27E1A705ADA00BAE0A1 /* AppDelegate.m in Sources */,
+				4C401D981A70637100FC0986 /* Depot.m in Sources */,
 				1F87F27B1A705ADA00BAE0A1 /* main.m in Sources */,
+				4C401DA11A7063D500FC0986 /* WebserviceData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
