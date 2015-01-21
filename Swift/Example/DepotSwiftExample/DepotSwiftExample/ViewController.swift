@@ -1,10 +1,31 @@
+//Copyright (c) 2012 The Board of Trustees of The University of Alabama
+//All rights reserved.
 //
-//  ViewController.swift
-//  DepotSwiftExample
+//Redistribution and use in source and binary forms, with or without
+//modification, are permitted provided that the following conditions
+//are met:
 //
-//  Created by Matthew York on 1/21/15.
-//  Copyright (c) 2015 Matthew York. All rights reserved.
+//1. Redistributions of source code must retain the above copyright
+//notice, this list of conditions and the following disclaimer.
+//2. Redistributions in binary form must reproduce the above copyright
+//notice, this list of conditions and the following disclaimer in the
+//documentation and/or other materials provided with the distribution.
+//3. Neither the name of the University nor the names of the contributors
+//may be used to endorse or promote products derived from this software
+//without specific prior written permission.
 //
+//THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+//"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+//LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS
+//FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL
+//THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+//INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+//(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+//SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
+//HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
+//STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+//ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
+//OF THE POSSIBILITY OF SUCH DAMAGE.
 
 import UIKit
 
@@ -13,13 +34,44 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        
+        //Get test data (premade objects in code for testing)
+        getTestData()
+        
+        //Get local DB data (object from a local database, should be asyncronous)
+        getLocalDBData()
+        
+        //Get web service data (object from a web service call, should be asyncronous)
+        getWebServiceData()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    //MARK: Depot Methods
+    
+    func getTestData() {
+        DepotSingleton.sharedDepot.setNewDataSource(DataSources.TestData)
+        let string = DepotSingleton.sharedDepot.getString()
+        println(string)
+    }
+    
+    func getLocalDBData() {
+        DepotSingleton.sharedDepot.setNewDataSource(DataSources.LocalDB)
+        let string = DepotSingleton.sharedDepot.getString()
+        println(string)
+    }
+    
+    func getWebServiceData() {
+        DepotSingleton.sharedDepot.setNewDataSource(DataSources.Webservice)
+        
+        //An example of an asynchronous call
+        DepotSingleton.sharedDepot.getAsyncString("Input String", response: { (responseString: String) -> Void in
+            println(responseString)
+        })
+    }
 }
 

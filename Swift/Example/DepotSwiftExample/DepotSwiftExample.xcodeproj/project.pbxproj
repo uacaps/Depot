@@ -13,6 +13,10 @@
 		1F87F2541A705AC200BAE0A1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1F87F2531A705AC200BAE0A1 /* Images.xcassets */; };
 		1F87F2571A705AC200BAE0A1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F87F2551A705AC200BAE0A1 /* LaunchScreen.xib */; };
 		1F87F2631A705AC200BAE0A1 /* DepotSwiftExampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F87F2621A705AC200BAE0A1 /* DepotSwiftExampleTests.swift */; };
+		1F87F2A31A705BBA00BAE0A1 /* Depot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F87F2A01A705BBA00BAE0A1 /* Depot.swift */; };
+		1F87F2A41A705BBA00BAE0A1 /* LocalDBData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F87F2A11A705BBA00BAE0A1 /* LocalDBData.swift */; };
+		1F87F2A51A705BBA00BAE0A1 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F87F2A21A705BBA00BAE0A1 /* TestData.swift */; };
+		1F87F2AB1A705DA100BAE0A1 /* WebserviceData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F87F2AA1A705DA100BAE0A1 /* WebserviceData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		1F87F25C1A705AC200BAE0A1 /* DepotSwiftExampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DepotSwiftExampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1F87F2611A705AC200BAE0A1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1F87F2621A705AC200BAE0A1 /* DepotSwiftExampleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepotSwiftExampleTests.swift; sourceTree = "<group>"; };
+		1F87F2A01A705BBA00BAE0A1 /* Depot.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Depot.swift; path = ../../../Depot/Depot.swift; sourceTree = "<group>"; };
+		1F87F2A11A705BBA00BAE0A1 /* LocalDBData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalDBData.swift; path = ../../../Depot/LocalDBData.swift; sourceTree = "<group>"; };
+		1F87F2A21A705BBA00BAE0A1 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TestData.swift; path = ../../../Depot/TestData.swift; sourceTree = "<group>"; };
+		1F87F2AA1A705DA100BAE0A1 /* WebserviceData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WebserviceData.swift; path = ../../../Depot/WebserviceData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +85,7 @@
 		1F87F2491A705AC200BAE0A1 /* DepotSwiftExample */ = {
 			isa = PBXGroup;
 			children = (
+				1F87F29E1A705B4F00BAE0A1 /* Depot */,
 				1F87F24C1A705AC200BAE0A1 /* AppDelegate.swift */,
 				1F87F24E1A705AC200BAE0A1 /* ViewController.swift */,
 				1F87F2501A705AC200BAE0A1 /* Main.storyboard */,
@@ -110,6 +119,25 @@
 				1F87F2611A705AC200BAE0A1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F87F29E1A705B4F00BAE0A1 /* Depot */ = {
+			isa = PBXGroup;
+			children = (
+				1F87F2A01A705BBA00BAE0A1 /* Depot.swift */,
+				1F87F29F1A705B7900BAE0A1 /* DataSources */,
+			);
+			name = Depot;
+			sourceTree = "<group>";
+		};
+		1F87F29F1A705B7900BAE0A1 /* DataSources */ = {
+			isa = PBXGroup;
+			children = (
+				1F87F2A11A705BBA00BAE0A1 /* LocalDBData.swift */,
+				1F87F2A21A705BBA00BAE0A1 /* TestData.swift */,
+				1F87F2AA1A705DA100BAE0A1 /* WebserviceData.swift */,
+			);
+			name = DataSources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -212,8 +240,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F87F2AB1A705DA100BAE0A1 /* WebserviceData.swift in Sources */,
 				1F87F24F1A705AC200BAE0A1 /* ViewController.swift in Sources */,
+				1F87F2A31A705BBA00BAE0A1 /* Depot.swift in Sources */,
 				1F87F24D1A705AC200BAE0A1 /* AppDelegate.swift in Sources */,
+				1F87F2A51A705BBA00BAE0A1 /* TestData.swift in Sources */,
+				1F87F2A41A705BBA00BAE0A1 /* LocalDBData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +437,7 @@
 				1F87F2681A705AC200BAE0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F87F2691A705AC200BAE0A1 /* Build configuration list for PBXNativeTarget "DepotSwiftExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -413,6 +446,7 @@
 				1F87F26B1A705AC200BAE0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

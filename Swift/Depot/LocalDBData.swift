@@ -27,10 +27,24 @@
 //ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
-#import <UIKit/UIKit.h>
+import Foundation
 
-@interface ViewController : UIViewController
-
-
-@end
-
+private let _sharedInstance = LocalDBData()
+class LocalDBData: NSObject, DepotInterface {
+    //Singleton Access
+    class var sharedInstance: LocalDBData {
+        return _sharedInstance
+    }
+    
+    func getString() -> String {
+        return "A test string from the local database"
+    }
+    
+    func getAsyncString(name: String, response: ((String) -> Void)) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { () -> Void in
+            sleep(2)
+            
+            response("A test string from an asynchronous call to the local database")
+        })
+    }
+}

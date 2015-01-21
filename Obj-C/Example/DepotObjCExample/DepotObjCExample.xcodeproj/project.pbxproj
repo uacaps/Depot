@@ -81,6 +81,7 @@
 		1F87F2771A705ADA00BAE0A1 /* DepotObjCExample */ = {
 			isa = PBXGroup;
 			children = (
+				1F87F2A61A705D1800BAE0A1 /* Depot */,
 				1F87F27C1A705ADA00BAE0A1 /* AppDelegate.h */,
 				1F87F27D1A705ADA00BAE0A1 /* AppDelegate.m */,
 				1F87F27F1A705ADA00BAE0A1 /* ViewController.h */,
@@ -117,6 +118,21 @@
 				1F87F2931A705ADB00BAE0A1 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		1F87F2A61A705D1800BAE0A1 /* Depot */ = {
+			isa = PBXGroup;
+			children = (
+				1F87F2A71A705D3500BAE0A1 /* Datasources */,
+			);
+			name = Depot;
+			sourceTree = "<group>";
+		};
+		1F87F2A71A705D3500BAE0A1 /* Datasources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Datasources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -412,6 +428,7 @@
 				1F87F29A1A705ADB00BAE0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		1F87F29B1A705ADB00BAE0A1 /* Build configuration list for PBXNativeTarget "DepotObjCExampleTests" */ = {
 			isa = XCConfigurationList;
@@ -420,6 +437,7 @@
 				1F87F29D1A705ADB00BAE0A1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
