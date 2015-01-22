@@ -31,4 +31,26 @@
 
 @implementation LocalDBData
 
+//Singleton Access
++(instancetype)sharedInstance{
+	static id sharedInstance = nil;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		sharedInstance = [[self alloc]init];
+	});
+	return sharedInstance;
+}
+
+-(NSString*)getString{
+	return @"A test string from the local database";
+}
+
+-(void)getAsyncString:(NSString*)name response:(ResponseCompletionBlock)response{
+	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+		response(@"A test string from an asynchronous call tot he local database");
+	});
+	return;
+}
+
 @end

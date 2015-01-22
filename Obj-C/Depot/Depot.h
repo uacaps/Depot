@@ -29,13 +29,28 @@
 
 #import <Foundation/Foundation.h>
 
+typedef NS_ENUM(NSInteger, DepotDataSource){
+	DepotDataSourceTest,
+	DepotDataSourceWebservice,
+	DepotDataSourceLocal,
+	DepotDataSourceNone
+};
+
+//Completion Block
+typedef void(^ResponseCompletionBlock)(NSString *response);
+
 @protocol DepotInterface
+
+//Protocol Instance Methods
 -(NSString*)getString;
--(void)getAsyncString:(NSString*)name:(NSString*)response;
+-(void)getAsyncString:(NSString*)name response:(ResponseCompletionBlock)response;
 @end
 
 @interface Depot : NSObject
 
-enum DataSources;
+//Interface Instance Methods
++(instancetype)depotSingleton;
+-(void)setNewDataSource:(DepotDataSource)source;
+-(id<DepotInterface>)dataSourceForType:(DepotDataSource)source;
 
 @end

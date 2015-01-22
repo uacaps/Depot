@@ -28,6 +28,7 @@
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "ViewController.h"
+#import "Depot.h"
 
 @interface ViewController ()
 
@@ -38,11 +39,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+	
+	//Get test data (premade objects in code for testing)]
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+#pragma mark - Depot Methods
+
+-(void)getTestData{
+	//[[Depot depotSingleton] setNewDataSource:(DataSources)]
+	[[Depot depotSingleton] setNewDataSource: DepotDataSourceTest];
+}
+
 
 @end

@@ -28,7 +28,11 @@
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "Depot.h"
 
-@interface TestData : NSObject
+@interface TestData : NSObject <DepotInterface>
+
+//Singleton Access
++(instancetype)sharedInstance;
 
 @end

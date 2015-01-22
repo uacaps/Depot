@@ -28,7 +28,11 @@
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import <Foundation/Foundation.h>
+#import "Depot.h"
 
-@interface LocalDBData : NSObject
+@interface LocalDBData : NSObject <DepotInterface>
+
+//Singleton Access
++(instancetype)sharedInstance;
 
 @end

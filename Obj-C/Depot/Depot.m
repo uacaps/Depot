@@ -28,24 +28,63 @@
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #import "Depot.h"
+#import "TestData.h"
+#import "WebserviceData.h"
+#import "LocalDBData.h"
+
+@interface Depot ()
+@property (nonatomic, assign) DepotDataSource dataSourceType;
+@property id<DepotInterface> dataSource;
+@end
 
 @implementation Depot
 
-enum DataSources{
-	TestData,
-	Webservice,
-	LocalDB,
-	None
-};
-
-//Mark: Singleton
-static Depot* depotInstance;
-
-+(Depot*)sharedInstance{
-	if (depotInstance == nil) {
-		depotInstance = [[Depot alloc]init];
-	}
+#pragma mark - Singleton Access
++(instancetype)depotSingleton{
+	static id depotInstance = nil;
+	
+	static dispatch_once_t onceToken;
+	dispatch_once(&onceToken, ^{
+		depotInstance = [[self alloc]init];
+	});
 	return depotInstance;
+}
+
+#pragma mark - Init and Init helpers
+-(id)init{
+	self = [super init];
+	if (self) {
+		self.dataSource = [self dataSourceForType:self.dataSourceType];
+	}
+	return self;
+}
+
+-(id<DepotInterface>)dataSourceForType:(DepotDataSource)source{
+	switch (source) {
+	case DepotDataSourceTest:
+		return [TestData sharedInstance];
+	case DepotDataSourceLocal:
+		return [LocalDBData sharedInstance];
+	case DepotDataSourceWebservice:
+		return [WebserviceData sharedInstance];
+	default:
+			return nil;
+	}
+}
+
+-(void)setNewDataSource:(DepotDataSource)source{
+	self.dataSourceType = source;
+	self.dataSource = [self dataSourceForType:source];
+}
+
+#pragma mark - Instance Methods
+
+-(NSString*)getString{
+	return [self.dataSource getString];
+}
+
+-(void)getAsyncString:(NSString*)name response:(ResponseCompletionBlock)response{
+	[self.dataSource getAsyncString:name response:response];
 }
 
 @end
