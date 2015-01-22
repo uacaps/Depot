@@ -37,6 +37,10 @@ class WebserviceData: NSObject, DepotInterface {
         return _sharedInstance
     }
     
+    private override init() {
+        super.init()
+    }
+    
     func getString() -> String {
         return "A test string from the test webservice class"
     }

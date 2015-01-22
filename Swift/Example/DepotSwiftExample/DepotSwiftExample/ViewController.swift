@@ -35,7 +35,6 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        
         //Get test data (premade objects in code for testing)
         getTestData()
         
