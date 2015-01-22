@@ -1,6 +1,10 @@
+package edu.ua.caps.depotandroiddemo.DataSouces;
+
+import edu.ua.caps.depotandroiddemo.DepotInterface;
+
 //Copyright (c) 2012 The Board of Trustees of The University of Alabama
 //All rights reserved.
-//    
+//
 //Redistribution and use in source and binary forms, with or without
 //modification, are permitted provided that the following conditions
 //are met:
@@ -27,65 +31,19 @@
 //ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import Foundation
+public class WebService implements DepotInterface {
+    private static WebService mSharedWebService = new WebService();
 
-enum DataSources {
-    case TestData
-    case Webservice
-    case LocalDB
-    case None
-}
+    //Setup singleton instance
+    public static WebService sharedWebService() {
+        return mSharedWebService;
+    }
 
+    private WebService() {
 
-//MARK: Protocol
-@objc protocol DepotInterface{
-    func getString() -> String
-    func getAsyncString(name: String, response: ((String) -> Void))
-}
+    }
 
-//MARK: Class
-private let _sharedDepot = DepotSingleton()
-
-class DepotSingleton {
-    //Singleton Access
-    class var sharedDepot: DepotSingleton {
-        return _sharedDepot
-    }
-    
-    //Variables
-    private var dataSourceType: DataSources = DataSources.None
-    private var dataSource: DepotInterface?
-    
-    //Init and Init Helpers
-    private init() {
-        self.dataSource = dataSourceForType(self.dataSourceType)
-    }
-    
-    //
-    func dataSourceForType(source: DataSources) -> DepotInterface?{
-        switch source {
-        case DataSources.TestData:
-            return TestData.sharedInstance
-        case DataSources.LocalDB:
-            return LocalDBData.sharedInstance
-        case DataSources.Webservice:
-            return WebserviceData.sharedInstance
-        default:
-            return nil
-        }
-    }
-    
-    func setNewDataSource(source: DataSources) {
-        self.dataSourceType = source
-        self.dataSource = dataSourceForType(source)
-    }
-    
-    //MARK: Molecules
-    func getString() -> String? {
-        return self.dataSource?.getString()
-    }
-    
-    func getAsyncString(name: String, response: ((String) -> Void)) {
-        return self.dataSource!.getAsyncString(name, response: response)
+    public String getString() {
+        return "This is a string from the web service class";
     }
 }

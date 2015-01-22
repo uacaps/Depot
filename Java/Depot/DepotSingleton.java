@@ -1,6 +1,12 @@
+package edu.ua.caps.depotandroiddemo;
+
+import edu.ua.caps.depotandroiddemo.DataSouces.LocalDB;
+import edu.ua.caps.depotandroiddemo.DataSouces.TestData;
+import edu.ua.caps.depotandroiddemo.DataSouces.WebService;
+
 //Copyright (c) 2012 The Board of Trustees of The University of Alabama
 //All rights reserved.
-//    
+//
 //Redistribution and use in source and binary forms, with or without
 //modification, are permitted provided that the following conditions
 //are met:
@@ -27,65 +33,45 @@
 //ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED
 //OF THE POSSIBILITY OF SUCH DAMAGE.
 
-import Foundation
+public class DepotSingleton implements DepotInterface{
 
-enum DataSources {
-    case TestData
-    case Webservice
-    case LocalDB
-    case None
-}
+    private static DepotSingleton mSharedInstance = new DepotSingleton();
 
+    private DataSources dataSourceType;
+    private DepotInterface dataSource;
 
-//MARK: Protocol
-@objc protocol DepotInterface{
-    func getString() -> String
-    func getAsyncString(name: String, response: ((String) -> Void))
-}
-
-//MARK: Class
-private let _sharedDepot = DepotSingleton()
-
-class DepotSingleton {
-    //Singleton Access
-    class var sharedDepot: DepotSingleton {
-        return _sharedDepot
+    //Singleton
+    public static DepotSingleton sharedDepot () {
+        return mSharedInstance;
     }
-    
-    //Variables
-    private var dataSourceType: DataSources = DataSources.None
-    private var dataSource: DepotInterface?
-    
-    //Init and Init Helpers
-    private init() {
-        self.dataSource = dataSourceForType(self.dataSourceType)
+
+    private DepotSingleton() {
+        super();
+        this.dataSource = dataSourceForType(DataSources.None);
     }
-    
-    //
-    func dataSourceForType(source: DataSources) -> DepotInterface?{
-        switch source {
-        case DataSources.TestData:
-            return TestData.sharedInstance
-        case DataSources.LocalDB:
-            return LocalDBData.sharedInstance
-        case DataSources.Webservice:
-            return WebserviceData.sharedInstance
-        default:
-            return nil
+
+    //Helper methods
+    private DepotInterface dataSourceForType(DataSources dataSourceType) {
+        switch (dataSourceType) {
+            case TestData:
+                return TestData.sharedTestData();
+            case LocalDB:
+                return LocalDB.sharedLocalDB();
+            case Webservice:
+                return WebService.sharedWebService();
+            default:
+                return null;
         }
     }
-    
-    func setNewDataSource(source: DataSources) {
-        self.dataSourceType = source
-        self.dataSource = dataSourceForType(source)
+
+    //Context Switcher
+    public void setNewDataSource(DataSources source) {
+        this.dataSourceType = source;
+        this.dataSource = dataSourceForType(source);
     }
-    
-    //MARK: Molecules
-    func getString() -> String? {
-        return self.dataSource?.getString()
-    }
-    
-    func getAsyncString(name: String, response: ((String) -> Void)) {
-        return self.dataSource!.getAsyncString(name, response: response)
+
+    //Interface methods
+    public String getString() {
+        return this.dataSource.getString();
     }
 }
