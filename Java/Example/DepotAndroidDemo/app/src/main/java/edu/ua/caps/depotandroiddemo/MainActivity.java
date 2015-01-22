@@ -2,6 +2,7 @@ package edu.ua.caps.depotandroiddemo;
 
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 
@@ -43,9 +44,11 @@ public class MainActivity extends ActionBarActivity {
 
         DepotSingleton.sharedDepot().setNewDataSource(DataSources.TestData);
         String asdf = DepotSingleton.sharedDepot().getString();
+        Log.d("asdf", asdf);
 
         DepotSingleton.sharedDepot().setNewDataSource(DataSources.LocalDB);
         String localASDF = DepotSingleton.sharedDepot().getString();
+        Log.d("asdf", localASDF);
     }
 
 
