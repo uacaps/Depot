@@ -52,5 +52,7 @@ typedef void(^ResponseCompletionBlock)(NSString *response);
 +(instancetype)depotSingleton;
 -(void)setNewDataSource:(DepotDataSource)source;
 -(id<DepotInterface>)dataSourceForType:(DepotDataSource)source;
+-(NSString*)getString;
+-(void)getAsyncString:(NSString*)name response:(ResponseCompletionBlock)response;
 
 @end

@@ -37,23 +37,46 @@
 @implementation ViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view, typically from a nib.
+	[super viewDidLoad];
+	// Do any additional setup after loading the view, typically from a nib.
 	
-	//Get test data (premade objects in code for testing)]
+	//Get test data (premade objects in code for testing)
+	[self getTestData];
+	
+	//Get local DB data (object from a local database, should be asyncronous)
+	[self getLocalDBData];
+	
+	//Get web service data (object from a web service call, should be asyncronous)
+	[self getWebServiceData];
+
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+	[super didReceiveMemoryWarning];
+	// Dispose of any resources that can be recreated.
 }
 
 #pragma mark - Depot Methods
 
 -(void)getTestData{
-	//[[Depot depotSingleton] setNewDataSource:(DataSources)]
 	[[Depot depotSingleton] setNewDataSource: DepotDataSourceTest];
+	NSString* string = [[Depot depotSingleton] getString];
+	NSLog(@"%@", string);
 }
 
+-(void)getLocalDBData{
+	[[Depot depotSingleton] setNewDataSource: DepotDataSourceLocal];
+	NSString* string = [[Depot depotSingleton] getString];
+	NSLog(@"%@", string);
+}
+
+-(void)getWebServiceData{
+	[[Depot depotSingleton] setNewDataSource: DepotDataSourceWebservice];
+	
+	//An example of an asynchronous call
+	[[Depot depotSingleton] getAsyncString:@"Test String" response:^(NSString* response){
+		NSLog(@"%@", response);
+	}];
+}
 
 @end

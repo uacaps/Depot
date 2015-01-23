@@ -48,7 +48,7 @@
 
 -(void)getAsyncString:(NSString*)name response:(ResponseCompletionBlock)response{
 	dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
-		response(@"A test string from an asynchronous call tot he local database");
+		response(@"A test string from an asynchronous call to the local database");
 	});
 	return;
 }
