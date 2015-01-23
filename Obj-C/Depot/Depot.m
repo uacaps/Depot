@@ -84,6 +84,7 @@
 }
 
 -(void)getAsyncString:(NSString*)name response:(ResponseCompletionBlock)response{
+	sleep(2);
 	[self.dataSource getAsyncString:name response:response];
 }
 
